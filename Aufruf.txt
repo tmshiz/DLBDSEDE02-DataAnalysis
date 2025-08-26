@@ -1,9 +1,9 @@
-python nlp_lda.py ^
-  --input c:/PythonProjekt/meldungen_test1.json ^
-  --out_txt c:/PythonProjekt/meldungen_test_bereinigt.txt ^
-  --out_csv c:/PythonProjekt/themen_uebersicht_lda.csv ^
-  --out_png c:/PythonProjekt/themen_haeufigkeit_lda.png ^
-  --out_top c:/PythonProjekt/top_themen_lda.txt ^
+python nlp_tfidf.py ^
+  --input c:/PythonProjekt/meldungen.json ^
+  --out_txt c:/PythonProjekt/meldungen_bereinigt.txt ^
+  --out_csv c:/PythonProjekt/themen_uebersicht_.csv ^
+  --out_png c:/PythonProjekt/themen_haeufigkeit_.png ^
+  --out_top c:/PythonProjekt/top_themen_.txt ^
   --topics 8 ^
   --label_words 4 ^
   --top_words 12 ^
