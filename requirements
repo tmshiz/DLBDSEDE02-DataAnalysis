@@ -1,0 +1,12 @@
+argparse: 1.1
+BERTopic: 0.17.0
+json: 2.0.9
+matplotlib: 3.8.0
+nltk: 3.8.1
+numpy: 1.24.4
+pandas: 1.5.3
+re: 2.2.1
+scikit-learn: 1.2.2
+sentence-transformers: 4.1.0
+spaCy: 3.7.2
+spellchecker: 0.8.2
