@@ -1,3 +1,16 @@
+python nlp_bertopic.py ^
+  --input c:/PythonProjekt/meldungen.json ^
+  --out_txt c:/PythonProjekt/meldungen_bereinigt.txt ^
+  --out_csv c:/PythonProjekt/themen_uebersicht_.csv ^
+  --out_png c:/PythonProjekt/themen_haeufigkeit_.png ^
+  --out_top c:/PythonProjekt/top_themen_.txt ^
+  --topics 8 ^
+  --label_words 4 ^
+  --top_words 12 ^
+  --spellcheck
+
+
+
 python nlp_tfidf.py ^
   --input c:/PythonProjekt/meldungen.json ^
   --out_txt c:/PythonProjekt/meldungen_bereinigt.txt ^
@@ -8,3 +21,4 @@ python nlp_tfidf.py ^
   --label_words 4 ^
   --top_words 12 ^
   --spellcheck
+
