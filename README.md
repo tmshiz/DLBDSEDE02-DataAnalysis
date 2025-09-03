@@ -13,13 +13,13 @@ python nlp_tfidf.py --input meldungen.json <br/>
 <br/>
 Optionale Parameter: <br/>
 <p>
-  --out_txt                (definiert den Speicherort der Ergebnisse der Vorverarbeitungsphase - Standardverzeichnis c:\Users\username\Desktop) <br/>
-  --out_png                (definiert den Speicherort der Themenübersicht (PNG) - Standardverzeichnis c:\Users\username\Desktop)<br/>
-  --out_top                (definiert den Speicherort der Themenübersicht (TXT) - Standardverzeichnis c:\Users\username\Desktop)<br/>
-  --topics 8               (Anzahl der Themen)<br/>
-  --label_words 4          (Anzahl der Wörter pro Thema im Label)<br/>
-  --top_words 12           (Anzahl der definierten Top-Wörter pro Thema)<br/>
-  --spellcheck             (aktiviert die Rechtschreibung)<br/>
+  --out_txt<br/>                definiert den Speicherort der Vorverarbeitungsphase - Standard: c:\Users\username\Desktop<br/>
+  --out_png<br/>                definiert den Speicherort der Themenübersicht (PNG) - Standard: c:\Users\username\Desktop<br/>
+  --out_top<br/>                definiert den Speicherort der Themenübersicht (TXT) - Standard: c:\Users\username\Desktop<br/>
+  --topics 10<br/>               Anzahl der Themen - Standard: 10<br/>
+  --label_words 3<br/>        Anzahl der Wörter pro Thema im Label - Standard: 3<br/>
+  --top_words 10<br/>           Anzahl der definierten Top-Wörter pro Thema  - Standard: 10<br/>
+  --spellcheck<br/>             aktiviert die Rechtschreibung  - Standard: deaktiviert<br/>
 <br/>
 <p/>
 Dateien:<br/>
