@@ -14,6 +14,7 @@ from sentence_transformers import SentenceTransformer
 import matplotlib
 matplotlib.use("Agg", force=True)
 import matplotlib.pyplot as plt
+import pandas as pd
 from pathlib import Path
 
 # Standard Speicherort definieren
@@ -167,4 +168,5 @@ print(f"[INFO] Top-Themen gespeichert: {args.out_top}")
 # Timer stoppen
 laufzeit = time.time() - start_time
 print(f"[INFO] Scriptlaufzeit: {laufzeit:.2f} Sekunden")
+
 
