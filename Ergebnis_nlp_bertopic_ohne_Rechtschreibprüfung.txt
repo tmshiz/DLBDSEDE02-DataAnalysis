@@ -1,0 +1,38 @@
+Top 9 Themen (BERTopic + SentenceTransformer)
+========================================
+Thema: abfall, sperrmüll, müllablagerung (ID 0)
+Top-Wörter (10): abfall, sperrmüll, müllablagerung, ablagern, bauabfälle, bauschutt, müll, sehen, foto, sonstig
+Anzahl der Übereinstimmungen: 45958
+----------------------------------------
+Thema: straßenaufsicht, park, parkraumbewirtschaftung (ID 1)
+Top-Wörter (10): straßenaufsicht, park, parkraumbewirtschaftung, straße, sonstig, straßenreinigung, verkehrszeichen, gehwegschäden, verkehr, parken
+Anzahl der Übereinstimmungen: 8857
+----------------------------------------
+Thema: elektroschrott, ablagern, abfall (ID 2)
+Top-Wörter (10): elektroschrott, ablagern, abfall, mikrowelle, metall, autobatterie, elektro, elektrogerät, elektronik, kabel
+Anzahl der Übereinstimmungen: 2917
+----------------------------------------
+Thema: weihnachtsbäume, weihnachtsbaum, abfall (ID 3)
+Top-Wörter (10): weihnachtsbäume, weihnachtsbaum, abfall, schrotträd, farbeimer, liegen, jahr, abholen, gehweg, sehen
+Anzahl der Übereinstimmungen: 891
+----------------------------------------
+Thema: tv, fernseher, monitor (ID 4)
+Top-Wörter (10): tv, fernseher, monitor, gerät, pc, alt, flachbildfernseher, groß, computer, liegen
+Anzahl der Übereinstimmungen: 188
+----------------------------------------
+Thema: asbest, abgelaufen, kkr (ID 5)
+Top-Wörter (10): asbest, abgelaufen, kkr, versicherungskennzeichen, versicherungskennzeiche, versicherung, versicherungsschutz, asbestmüll, asbestplatt, wrack
+Anzahl der Übereinstimmungen: 59
+----------------------------------------
+Thema: kubikmeter, container, mehrere (ID 6)
+Top-Wörter (10): kubikmeter, container, mehrere, dachpappe, quadratmeter, dreckhaufen, liegengebliebene, splittberg, gehwegsanierung, kubikmeterweise
+Anzahl der Übereinstimmungen: 51
+----------------------------------------
+Thema: spermüll, fortlaufend, scharnweber (ID 7)
+Top-Wörter (10): spermüll, fortlaufend, scharnweber, stoffbahn, spermüllablagerung, wendkreis, gummireifen, sofagerippe, bewegungsreich, schulgebäud
+Anzahl der Übereinstimmungen: 12
+----------------------------------------
+Thema: bass, musikanlage, lautstärke (ID 8)
+Top-Wörter (10): bass, musikanlage, lautstärke, musik, unzumutbar, basslastige, schlafraum, gebäudefassade, schallschleuse, körperschall
+Anzahl der Übereinstimmungen: 11
+----------------------------------------
