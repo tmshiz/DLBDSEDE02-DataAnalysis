@@ -42,6 +42,15 @@ for path in [args.out_txt, args.out_png, args.out_top]:
 # Stopwörter konfigurieren
 nltk.download('stopwords', quiet=True)
 stopwoerter = set(stopwords.words('german'))
+stopwoerter_manuell={
+    "seit", "ca", "schon", "bisher", "immer",
+    "bitte", "viel", "vielen", "dank", "danke"
+}
+
+# Stopwörter zusammenfügen
+stopwoerter=stopwoerter|stopwoerter_manuell
+
+# Lemmantisierung vorbereiten
 nlp = spacy.load("de_core_news_sm")
 
 # Rechtschreibung optional
@@ -50,27 +59,20 @@ if args.spellcheck:
     from spellchecker import SpellChecker
     spell = SpellChecker(language="de")
 
-# Vorverarbeitung 
 def korrigiere_wort(w: str) -> str:
     if not spell or not w or not w.isalpha():
         return w
-    if len(w) < 2 or len(w) > 30:
-        return w
     if spell.known([w]):
         return w
-    try:
-        kandidaten = spell.candidates(w) or set()
-    except Exception:
-        kandidaten = set()
+    
+    kandidaten = spell.candidates(w)
+    if not kandidaten:
+        return w   # nichts gefunden → Wort bleibt
+    
     if len(kandidaten) == 1:
-        return next(iter(kandidaten))
-    try:
-        corr = spell.correction(w)
-        if corr and isinstance(corr, str) and corr.isalpha() and corr != w:
-            return corr
-    except Exception:
-        pass
-    return w
+        return next(iter(kandidaten))  # sichere Korrektur
+    
+    return w 
 
 def bereinige_text(text: str) -> str:
     text = re.sub(r'[^a-zA-ZäöüÄÖÜß\s]', ' ', text)
@@ -119,13 +121,13 @@ topic_info = topic_model.get_topic_info()
 topic_info = topic_info[topic_info['Topic'] != -1].sort_values(by="Count", ascending=False).copy()
 
 # Labels
-labels = topic_model.generate_topic_labels(nr_words=args.label_words)
-def safe_label(x):
-    try:
-        return labels[x] if isinstance(labels, dict) else labels[x]
-    except Exception:
-        return f"Topic {x}"
-topic_info["Label"] = topic_info["Topic"].apply(safe_label)
+topics_dict = topic_model.get_topics()  # brauchen wir gleich auch für Top-Wörter
+
+def make_label(tid, k=args.label_words):
+    pairs = topics_dict.get(tid, [])[:k]
+    return ", ".join([w for w, _ in pairs]) if pairs else f"Topic {tid}"
+
+topic_info["Label"] = topic_info["Topic"].apply(make_label)
 
 # Top-Wörtern
 topics_dict = topic_model.get_topics()
@@ -149,24 +151,28 @@ print(f"[INFO] Plot gespeichert: {args.out_png}")
 
 # Top-Themen TXT speichern
 N = min(10, len(topic_info))
-lines = [f"Top {N} Themen\n", "=" * 40 + "\n"]
-for _, row in topic_info.head(N).iterrows():
-    tid = row["Topic"]
+lines = [f"Top {N} Themen (BERTopic + SentenceTransformer)\n", "=" * 40 + "\n"]
+
+for _, row in topic_info.sort_values("Count", ascending=False).head(N).iterrows():
+    tid   = int(row["Topic"])
     label = row["Label"]
+    words = ", ".join([w for w, _ in topics_dict.get(tid, [])[:args.top_words]])
     count = int(row["Count"])
-    words = top_words_str(tid, args.top_words)
     lines += [
-        f"Topic {tid} | {label}\n",
-        f"Count: {count}\n",
-        f"Top-Wörter ({args.top_words}): {words}\n",
+        f"Thema: {label} (ID {tid})\n",                    
+        f"Top-Wörter ({args.top_words}): {words}\n",       
+        f"Anzahl der Übereinstimmungen: {count}\n",         
         "-" * 40 + "\n"
     ]
+
 with open(args.out_top, "w", encoding="utf-8") as f_top:
-    f_top.writelines([l if l.endswith("\n") else l + "\n" for l in lines])
+    f_top.writelines(lines)
+
+print(f"[INFO] Top-Themen gespeichert: {args.out_top}")
+
+    
 print(f"[INFO] Top-Themen gespeichert: {args.out_top}")
 
 # Timer stoppen
 laufzeit = time.time() - start_time
 print(f"[INFO] Scriptlaufzeit: {laufzeit:.2f} Sekunden")
-
-
