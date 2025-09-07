@@ -13,8 +13,8 @@ from nltk.corpus import stopwords
 import matplotlib
 matplotlib.use("Agg", force=True)
 import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
+import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import LatentDirichletAllocation as LDA
 
@@ -42,7 +42,16 @@ for path in [args.out_txt, args.out_png, args.out_top]:
 
 # Stopwörter konfigurieren
 nltk.download('stopwords', quiet=True)
-STOP_DE = set(stopwords.words('german'))
+stopwoerter = set(stopwords.words('german'))
+stopwoerter_manuell={
+    "seit", "ca", "schon", "bisher", "immer",
+    "bitte", "viel", "vielen", "dank", "danke"
+}
+
+# Stopwörter zusammenfügen
+stopwoerter=stopwoerter|stopwoerter_manuell
+
+# Lemmantisierung vorbereiten
 nlp = spacy.load("de_core_news_sm")
 
 # Rechtschreibung optional
@@ -54,23 +63,18 @@ if args.spellcheck:
 def korrigiere_wort(w: str) -> str:
     if not spell or not w or not w.isalpha():
         return w
-    if len(w) < 2 or len(w) > 30:
-        return w
     if spell.known([w]):
         return w
-    try:
-        kandidaten = spell.candidates(w) or set()
-    except Exception:
-        kandidaten = set()
+    
+    kandidaten = spell.candidates(w)
+    if not kandidaten:
+        return w   # nichts gefunden → Wort bleibt
+    
     if len(kandidaten) == 1:
-        return next(iter(kandidaten))
-    try:
-        corr = spell.correction(w)
-        if corr and isinstance(corr, str) and corr.isalpha():
-            return corr
-    except Exception:
-        pass
-    return w
+        return next(iter(kandidaten))  # sichere Korrektur
+    
+    return w 
+
 
 # Funktion Vorverarbeitung
 def bereinige_text(text: str) -> str:
@@ -80,7 +84,7 @@ def bereinige_text(text: str) -> str:
     for t in doc:
         if t.is_alpha:
             lemma = t.lemma_.lower()
-            if lemma and lemma not in STOP_DE:
+            if lemma and lemma not in stopwoerter:
                 toks.append(korrigiere_wort(lemma))
     return " ".join(toks)
 
@@ -163,19 +167,22 @@ print(f"[INFO] Plot gespeichert: {args.out_png}")
 # Top-Themen TXT speichern
 N = min(10, len(topic_info))
 lines = [f"Top {N} Themen (TF-IDF + LDA)\n", "=" * 40 + "\n"]
-for _, row in topic_info.head(N).iterrows():
-    tid = int(row["Topic"])
+
+for _, row in topic_info.sort_values("Count", ascending=False).head(N).iterrows():
+    tid   = int(row["Topic"])
     label = row["Label"]
-    count = int(row["Count"])
     words = ", ".join(top_words_for_topic(tid, TWK))
+    count = int(row["Count"])
     lines += [
-        f"Topic {tid} | {label}\n",
-        f"Count: {count}\n",
-        f"Top-Wörter ({TWK}): {words}\n",
+        f"Thema: {label}\n",                       
+        f"Top-Wörter ({TWK}): {words}\n",           
+        f"Anzahl der Übereinstimmungen: {count}\n",  
         "-" * 40 + "\n"
     ]
+
 with open(args.out_top, "w", encoding="utf-8") as f_top:
-    f_top.writelines([l if l.endswith("\n") else l + "\n" for l in lines])
+    f_top.writelines(lines)
+
 print(f"[INFO] Top-Themen gespeichert: {args.out_top}")
 
 # Timer stoppen
