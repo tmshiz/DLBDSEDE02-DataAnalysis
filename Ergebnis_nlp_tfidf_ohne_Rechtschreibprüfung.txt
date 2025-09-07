@@ -1,0 +1,42 @@
+Top 10 Themen (TF-IDF + LDA)
+========================================
+Thema: müllablagerung, abfall müllablagerung, abfall
+Top-Wörter (10): müllablagerung, abfall müllablagerung, abfall, bauschutt, bauabfälle bauschutt, bauabfälle, abfall bauabfälle, sessel, teppich, regeneinlauf
+Anzahl der Übereinstimmungen: 11012
+----------------------------------------
+Thema: abfall sperrmüll, sperrmüll, abfall
+Top-Wörter (10): abfall sperrmüll, sperrmüll, abfall, matratz, bauabfälle ablagern, matratze, bauabfälle, ablagern, schrankteil, motorroller
+Anzahl der Übereinstimmungen: 9014
+----------------------------------------
+Thema: gehweg, brett, couch
+Top-Wörter (10): gehweg, brett, couch, woche, liegen, stehen, müll, tisch, reifen, monat
+Anzahl der Übereinstimmungen: 8853
+----------------------------------------
+Thema: sperrmüll ablagern, ablagern, sperrmüll
+Top-Wörter (10): sperrmüll ablagern, ablagern, sperrmüll, sonstig, abfall elektroschrott, abfall, abfall sonstig, elektroschrott, kühlschrank, straßenaufsicht sonstig
+Anzahl der Übereinstimmungen: 8375
+----------------------------------------
+Thema: müll, foto, sehen foto
+Top-Wörter (10): müll, foto, sehen foto, sehen, straßenreinigung, mangelnd straßenreinigung, mangelnd, straßenaufsicht, etc, defekt
+Anzahl der Übereinstimmungen: 8101
+----------------------------------------
+Thema: verkehr, straße, gehwegschäden
+Top-Wörter (10): verkehr, straße, gehwegschäden, straßenaufsicht straße, straße gehwegschäden, straßenaufsicht, fußplatt, anordnung, straßenverkehrsrechtlich anordnung, straßenverkehrsrechtlich
+Anzahl der Übereinstimmungen: 5495
+----------------------------------------
+Thema: elektroschrott ablagern, elektroschrott, einkaufswagen
+Top-Wörter (10): elektroschrott ablagern, elektroschrott, einkaufswagen, ablagern, vergessen, sofa, stuhl, absperrung, vergessen absperrung, papierkörb
+Anzahl der Übereinstimmungen: 5205
+----------------------------------------
+Thema: parkraumbewirtschaftung, parkraumbewirtschaftung sonstig, weihnachtsbäume
+Top-Wörter (10): parkraumbewirtschaftung, parkraumbewirtschaftung sonstig, weihnachtsbäume, sonstig, abfall weihnachtsbäume, schrottfahrräder, abfall, abfall schrottfahrräder, bioabfall, abfall bioabfall
+Anzahl der Übereinstimmungen: 4021
+----------------------------------------
+Thema: fehlend, absicherung, mangelnd absicherung
+Top-Wörter (10): fehlend, absicherung, mangelnd absicherung, fehlend mangelnd, baustelle fehlend, baustelle, mangelnd, müllsack, autowrack, abfall autowrack
+Anzahl der Übereinstimmungen: 3977
+----------------------------------------
+Thema: weihnachtsbaum, schrank, park
+Top-Wörter (10): weihnachtsbaum, schrank, park, grünanlage, verschmutzung, grünanlage park, müll verschmutzung, park müll, müll, waschmaschine
+Anzahl der Übereinstimmungen: 3219
+----------------------------------------
